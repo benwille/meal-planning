@@ -177,7 +177,7 @@ gulp.task("browser-sync", function() {
 gulp.task("scripts", function() {
 	var scripts = [
 		// Start - All BS4 stuff
-		`${paths.src}/js/bootstrap4/bootstrap.bundle.js`,
+		// `${paths.src}/js/bootstrap4/bootstrap.bundle.js`,
 
 		// End - All BS4 stuff
 

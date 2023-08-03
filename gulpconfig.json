@@ -23,6 +23,9 @@
 		"vendor": "./vendor",
 		"project": "./"
 	},
+	"options": {
+		"useBootstrap": false
+	},
 	"theme": {
 		"slug": "",
 		"name": "",

@@ -7,7 +7,6 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"setup": "gulp update-src",
 		"build": "gulp dist"
-		
 	},
 	"keywords": [
 		"PHP",
