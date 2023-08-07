@@ -1,0 +1,11 @@
+div.recipe {
+    .form-group,
+    .input-group {
+        margin-bottom: .25rem;
+
+        span.input-group-text {
+            cursor: pointer;
+        }
+
+    }
+}
