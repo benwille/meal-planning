@@ -46,7 +46,7 @@ $page_title = 'Home';
 $page_classes[] = 'home';
 $show_header = true;
 
-$date = date_create_from_format('U', date("U", strtotime("sunday -1 week")));
+$date = date_format(date_create(), 'w') == 0 ? date_create_from_format('U', date("U", strtotime("sunday 0 week"))) : date_create_from_format('U', date("U", strtotime("sunday -1 week")));
 // console_log(($date));
 $active_week[] = date_format($date, "U");
 for($i = 1; $i < 7; $i++) {
@@ -62,7 +62,7 @@ $i=0;
 <div id="calendar"></div>
 
 <main class="container <?php //echo 'vh-100';?>">
-	<form action="index2.php" method="post">
+	<form action="index.php" method="post">
 		<div
 			class="row row-cols-1 g-0 <?php //echo 'h-100';?>">
 			<div class="col text-center my-1">
@@ -75,7 +75,8 @@ $i=0;
 				    $plan = Calendar::find_by_did($day);
 				    ?>
 				<div class="col day">
-					<div class="card h-100">
+					<div
+						class="card <?php //echo 'h-100';?>">
 						<div
 							class="card-body <?php echo $day === $today ? 'active' : '';?>">
 							<h6 class="card-subtitle mb-2 text-uppercase">
@@ -102,7 +103,7 @@ $i=0;
 			</div>
 		</div>
 		<div class="col my-1">
-			<div class="btn btn-primary" id="submit">Submit</div>
+			<input type="submit" class="btn btn-primary" id="submit" value="Submit">
 		</div>
 	</form>
 </main>
