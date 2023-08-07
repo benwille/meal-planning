@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateActiveWeek() {
     clearActiveDate();
+    clearMessage();
     var startDate = new Date(calendar.currentData.dateProfile.currentRange.start);
     console.log(getLocaleDateObject(startDate));
     startDate = getLocaleDateObject(startDate);
@@ -86,14 +87,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $.post("../ajax.php", {
       plan: mealPlan
     }, function (response) {
-      console.log(response);
-      // document.getElementById("main").innerHTML = response;
+      // console.log(response);
+      document.getElementById("calendar").innerHTML = response;
     });
   });
-
   var input = document.querySelectorAll("input[type='text']");
   var mealPlan = [];
   $("#main").on("change", 'input[type="text"]', function (e) {
+    clearMessage();
     var day = $(this).parent();
     var plan = {
       id: day.children().eq(2).val(),
@@ -137,6 +138,9 @@ function clearActiveDate() {
   if (activeDate.length > 0) {
     activeDate[0].classList.remove("active");
   }
+}
+function clearMessage() {
+  document.getElementById("calendar").innerHTML = "";
 }
 function getLocaleDateObject(date) {
   var d = new Date();
