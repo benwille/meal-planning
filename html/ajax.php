@@ -29,9 +29,12 @@
             }
         }
         if($x > 0) {
-            echo 'There were ' . $x . ' errors. Please try again.';
+            $msg = 'There were ' . $x . ' errors. Please try again.';
+            echo '<div id="message">' . h($msg) . '</div>';
+
         } else {
-            echo 'Weekly meal plan was updated successfully';
+            $msg = 'Weekly meal plan was updated successfully';
+            echo '<div id="message">' . h($msg) . '</div>';
 
         }
 
