@@ -11,7 +11,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 <html lang="en">
 
 <head>
-	<title><?php // TODO: page title?>Page Title
+	<title><?php // TODO: page title?>Meal Planning
 		<?php if (isset($page_title)) {
 		    echo '- ' . h($page_title);
 		} ?>
@@ -67,8 +67,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 		media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
 
 	<?php // TODO: decide what JS files you want to include?>
-	<!-- <script src="<?php echo url_for('/js/theme.js'); ?>">
-	</script> -->
+
 	<!-- <script src="<?php echo url_for('/js/yall.min.js'); ?>">
 	</script> -->
 	<!-- <script src="<?php echo url_for('/js/app.js'); ?>">
@@ -93,28 +92,22 @@ echo '<script>console.log("' . $msg . '");</script>';
 	<?php if ($show_header == true) { ?>
 	<header class="bg-primary">
 		<div class="container">
-			<nav class="navbar navbar-dark navbar-expand-sm">
-				<div class="container">
-					<a
-						href="<?php echo url_for('/index.php'); ?>">
-						<img class="wordmark"
-							src="<?php //TODO: echo url_for('')?>"
-							alt="" />
-					</a>
-
-					<button class="navbar-toggler mb-2" type="button" data-toggle="collapse" data-target="#myTogglerNav"
-						aria-controls="myTogglerNav" aria-expanded="false" aria-label="Toggle navigation">
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand"
+						href="<?php echo url_for('/'); ?>">Meal
+						Planning</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-
-					<div class="collapse navbar-collapse text-right" id="myTogglerNav">
-						<div class="navbar-nav ml-3">
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<div class="navbar-nav">
 							<a class="nav-item nav-link"
-								href="<?php echo url_for(''); ?>">Item
-								1</a>
+								href="<?php echo url_for('/'); ?>">Schedule</a>
 							<a class="nav-item nav-link"
-								href="<?php echo url_for(''); ?>">Item
-								2</a>
+								href="<?php echo url_for('/recipes/'); ?>">Recipes</a>
 							<?php if ($session->is_logged_in()) { ?>
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/users/show.php?id=' . h(u($session->admin_id()))); ?>">Admin</a>
@@ -126,20 +119,12 @@ echo '<script>console.log("' . $msg . '");</script>';
 									<?php echo $session->username; ?></a>
 							</div>
 							<?php } ?>
-						</div><!-- navbar -->
+						</div>
 					</div>
-					<!--collapse-->
-					<?php if ($session->is_logged_in()) { ?>
-					<div class="d-none d-sm-inline text-light"><a
-							href="<?php echo url_for('/users/show.php?id=' . h($session->admin_id())); ?>"
-							class="text-white"><img
-								src="<?php echo url_for('/images/user.svg'); ?>"
-								style="height:25px" alt="user" /> User:
-							<?php echo $session->username; ?></a>
-					</div>
-					<?php } ?>
-				</div><!-- container -->
-			</nav><!-- nav -->
+				</div>
+			</nav>
+
+			<!-- nav -->
 
 		</div>
 

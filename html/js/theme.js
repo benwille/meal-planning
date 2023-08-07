@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // });
 
-  $('#submit').click(function (e) {
+  $("#submit").click(function (e) {
     e.preventDefault();
     // console.log('jQuery is working');
     // console.log('Type',typeof({plan:mealPlan}));
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var input = document.querySelectorAll("input[type='text']");
   var mealPlan = [];
-  $("#main").on('change', 'input[type="text"]', function (e) {
+  $("#main").on("change", 'input[type="text"]', function (e) {
     var day = $(this).parent();
     var plan = {
       id: day.children().eq(2).val(),
@@ -145,4 +145,50 @@ function getLocaleDateObject(date) {
   // console.log("StartDate:", new Date(date.valueOf() / 1000 + diff));
   return new Date(date.valueOf() + diff);
 }
-document.addEventListener("DOMContentLoaded", function () {});
+(function ($) {
+  $(".recipe").ready(function () {
+    $("#addIngredient").on("click", function (e) {
+      e.preventDefault();
+      var ing = $('input[name^="recipe[ingredients"]');
+      var c = ing.length;
+      var clone = ing.last().parent().clone();
+      var name = clone.find("input").attr("name");
+      name = name.replace(/(\d+)/, c);
+      clone.find("input").attr({
+        name: name,
+        placeholder: "Ingredient " + (c + 1),
+        value: ""
+      });
+      $(this).before(clone);
+    });
+    $("#addStep").on("click", function (e) {
+      e.preventDefault();
+      var instruction = $('textarea[name^="recipe[instructions"]');
+      var c = instruction.length;
+      var clone = instruction.last().parent().clone();
+      var name = clone.find("textarea").attr("name");
+      name = name.replace(/(\d+)/, c);
+      clone.find("textarea").attr({
+        name: name,
+        placeholder: "Step " + (c + 1)
+      });
+      clone.find("textarea").val("");
+      $(this).before(clone);
+    });
+    $(".recipe").on("click", "span.input-group-text", function (e) {
+      e.preventDefault();
+      if ($(this).parent().parent().children(".input-group").length == 1) {
+        let error = $(this).parent().parent().find(".invalid-feedback");
+        error.removeAttr("style").addClass("d-block");
+        window.setTimeout(function () {
+          console.log($(this));
+          error.fadeOut(1000, function () {
+            error.removeClass("d-block");
+          });
+        }, 5000);
+      } else if ($(this).parent().parent().children(".input-group").length > 1) {
+        $(this).parent().remove();
+      }
+    });
+  });
+})(jQuery);
