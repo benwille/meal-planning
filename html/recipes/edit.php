@@ -42,8 +42,6 @@ if(is_post_request()) {
 
 <?php $page_title = 'Edit Recipe'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
 
 <a class="backlink"
 	href="<?php echo url_for('/recipes/index.php'); ?>">&laquo;

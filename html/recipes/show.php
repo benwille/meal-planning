@@ -8,9 +8,10 @@ $recipe = Recipe::find_by_id($id);
 
 ?>
 
-<?php $page_title = 'Show Recipe: ' . h($recipe->full_name()); ?>
+<?php $page_title = 'Show Recipe: ' . h($recipe->recipe_name);
+$show_header = true; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <a class="backlink"
 	href="<?php echo url_for('/recipes/index.php'); ?>">&laquo;
@@ -18,16 +19,20 @@ $recipe = Recipe::find_by_id($id);
 
 <div class="recipe show">
 
-	<h1>Recipe: <?php echo h($recipe->full_name()); ?></h1>
+	<h1 class="mb-0"><?php echo h($recipe->recipe_name); ?></h1>
+	<div class="rating"><?php echo($recipe->rating());?>
+	</div>
+	
+
 
 	<div class="attributes">
 		<dl>
-			<dt>First name</dt>
-			<dd><?php echo h($recipe->first_name); ?></dd>
+			<dt>Prep Time:</dt>
+			<dd><?php echo h($recipe->time); ?></dd>
 		</dl>
 		<dl>
-			<dt>Last name</dt>
-			<dd><?php echo h($recipe->last_name); ?></dd>
+			<dt>Last Cooked:</dt>
+			<dd><?php echo h($recipe->last_cooked()); ?></dd>
 		</dl>
 		<dl>
 			<dt>Username</dt>

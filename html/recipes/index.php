@@ -33,7 +33,7 @@ $show_header = true;?>
 				<?php //if ($user->is_admin()) {?>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
-				<th>&nbsp;</th>
+				<!-- <th>&nbsp;</th> -->
 				<?php //}?>
 			</tr>
 			<?php foreach ($recipes as $recipe) { ?>
@@ -47,8 +47,8 @@ $show_header = true;?>
 					<td></td>
 					<td><?php echo h($recipe->last_cooked);?></td>
 					<td class="align-middle"><a class="action"
-							href="<?php echo url_for('/recipes/show.php?id=' . h(u($recipe->id))); ?>"
-							target="_blank">View</a></td>
+							href="<?php echo url_for('/recipes/show.php?id=' . h(u($recipe->id))); ?>">View</a>
+					</td>
 					<?php //if ($user->is_admin()) {?>
 					<td class="align-middle"><a class="action"
 							href="<?php echo url_for('/recipes/edit.php?id=' . h(u($recipe->id))); ?>">Edit</a>
@@ -56,7 +56,7 @@ $show_header = true;?>
 					<td class="align-middle"><a class="action"
 							href="<?php echo url_for('/recipes/delete.php?id=' . h(u($recipe->id))); ?>">Delete</a>
 					</td>
-					<td class="align-middle"><input type="submit" value="Update" /></td>
+					<!-- <td class="align-middle"><input type="submit" value="Update" /></td> -->
 					<?php // }?>
 				</form>
 			</tr>

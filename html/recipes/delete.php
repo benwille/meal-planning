@@ -26,7 +26,8 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Delete recipe'; ?>
+<?php $page_title = 'Delete recipe';
+$show_header = true; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 
@@ -38,7 +39,7 @@ if(is_post_request()) {
 <div class="recipes delete">
 	<h1>Delete recipe</h1>
 	<p>Are you sure you want to delete this recipe?</p>
-	<p class="item"><?php echo h($recipe->full_name()); ?></p>
+	<p class="item"><?php echo h($recipe->recipe_name); ?></p>
 
 	<form
 		action="<?php echo url_for('/recipes/delete.php?id=' . h(u($id))); ?>"
@@ -53,4 +54,4 @@ if(is_post_request()) {
 
 
 
-<?php include(SHARED_PATH . '_footer.php'); ?>
+<?php include(SHARED_PATH . '/footer.php'); ?>
