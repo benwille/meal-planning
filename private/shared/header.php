@@ -35,7 +35,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 	<link rel="apple-touch-icon" size="152x152"
 		href="<?php echo url_for('/images/apple-touch-icon-ipad.png'); ?>">
 	<link rel='manifest' href='/manifest.json'>
-	<meta name="theme-color" content="#ef5350">
+	<meta name="theme-color" content="#0d6efd">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta rel="apple-touch-startup-image"
@@ -106,8 +106,9 @@ echo '<script>console.log("' . $msg . '");</script>';
 						<div class="navbar-nav">
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/'); ?>">Schedule</a>
-							<a class="nav-item nav-link"
+							<!-- <a class="nav-item nav-link"
 								href="<?php echo url_for('/recipes/'); ?>">Recipes</a>
+							-->
 							<?php if ($session->is_logged_in()) { ?>
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/users/show.php?id=' . h(u($session->admin_id()))); ?>">Admin</a>

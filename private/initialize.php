@@ -36,22 +36,23 @@ require_once('validation_functions.php');
 // require_once('classes/bicycle.class.php');
 
 // -> All classes in directory
-foreach (glob('classes/*.class.php') as $file) {
-  require_once($file);
-}
+// foreach (glob('classes/*.class.php') as $file) {
+//   require_once($file);
+// }
 //
 // Autoload class definitions
 function my_autoload($class)
 {
-  if (preg_match('/\A\w+\Z/', $class)) {
-    include('classes/' . $class . '.class.php');
-  }
+    if (preg_match('/\A\w+\Z/', $class)) {
+        $class = strtolower($class);
+        include('classes/' . $class . '.class.php');
+    }
 }
 spl_autoload_register('my_autoload');
 $database = db_connect();
 DatabaseObject::set_database($database);
 //
-$session = new Session;
+$session = new Session();
 date_default_timezone_set("America/Denver");
 
 $start = microtime(true);
