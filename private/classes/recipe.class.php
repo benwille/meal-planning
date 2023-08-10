@@ -3,7 +3,7 @@
 class Recipe extends DatabaseObject
 {
     protected static $table_name = "recipe";
-    protected static $db_columns = ['id', 'recipe_name', 'category', 'rating', 'time', 'ingredients', 'instructions', 'last_cooked'];
+    protected static $db_columns = ['id', 'recipe_name', 'category', 'rating', 'time', 'ingredients', 'instructions', 'last_cooked', 'notes'];
 
     public $id;
     public $recipe_name;
@@ -13,6 +13,7 @@ class Recipe extends DatabaseObject
     public $ingredients;
     public $instructions;
     public $last_cooked;
+    public $notes;
 
     public const CATEGORY = [
         1 => 'Other',
@@ -33,11 +34,13 @@ class Recipe extends DatabaseObject
     {
         // $this->id = $args['id'] ?? '';
         $this->recipe_name = $args['recipe_name'] ?? '';
+        $this->category = $args['category'] ?? null;
         $this->rating = $args['d_id'] ?? null;
         $this->time = $args['time'] ?? null;
         $this->ingredients = serialize($args['ingredients']) ?? '';
         $this->instructions = serialize($args['instructions']) ?? '';
-        $this->last_cooked = $args['last_cooked'] ?? '';
+        $this->last_cooked = $args['last_cooked'] ?? null;
+        $this->notes = $args['notes'] ?? null;
     }
 
     public function category()

@@ -82,3 +82,8 @@ $instructions = $recipe->instructions();
 	</div>
 	<a href="" id="addStep" class="link-primary">Add Step</a>
 </div>
+<div class="form-group">
+	<label for="notes" class="form-label">Notes</label>
+	<textarea class="form-control" id="notes" rows="5"
+		name="recipe[notes]"><?php echo h($recipe->notes);?></textarea>
+</div>
