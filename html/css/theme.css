@@ -32,22 +32,13 @@ input {
   width: 100%;
   background-color: transparent; }
 
+@media (min-width: 992px) {
+  input#submit {
+    width: auto; } }
+
 @media (max-width: 1199px) {
   .display-5 {
     font-size: calc(1.2rem + 2.1vw); } }
-
-div.recipe .form-group,
-div.recipe .input-group {
-  margin-bottom: .25rem; }
-  div.recipe .form-group span.input-group-text,
-  div.recipe .input-group span.input-group-text {
-    cursor: pointer; }
-
-div.recipe.show dl {
-  margin-bottom: 0; }
-
-div.recipe.show dt, div.recipe.show dd {
-  display: inline; }
 
 /*--------------------------------------------------------------
 # Footer
