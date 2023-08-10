@@ -3,15 +3,31 @@
 class Recipe extends DatabaseObject
 {
     protected static $table_name = "recipe";
-    protected static $db_columns = ['id', 'recipe_name', 'rating', 'time', 'ingredients', 'instructions', 'last_cooked'];
+    protected static $db_columns = ['id', 'recipe_name', 'category', 'rating', 'time', 'ingredients', 'instructions', 'last_cooked'];
 
     public $id;
     public $recipe_name;
+    public $category;
     public $rating;
     public $time;
     public $ingredients;
     public $instructions;
     public $last_cooked;
+
+    public const CATEGORY = [
+        1 => 'Other',
+        2 => 'Beef',
+        3 => 'Pork',
+        4 => 'Chicken',
+        5 => 'Turkey',
+        6 => 'Seafood',
+        7 => 'Vegetarian',
+        8 => 'Salad',
+        9 => 'Pasta',
+        10 => 'Soups',
+        11 => 'Breakfast',
+        12 => 'Smoothie'
+    ];
 
     public function __construct($args=[])
     {
@@ -22,6 +38,15 @@ class Recipe extends DatabaseObject
         $this->ingredients = serialize($args['ingredients']) ?? '';
         $this->instructions = serialize($args['instructions']) ?? '';
         $this->last_cooked = $args['last_cooked'] ?? '';
+    }
+
+    public function category()
+    {
+        if($this->category) {
+            return self::CATEGORY[$this->category];
+        } else {
+            return 'Unknown';
+        }
     }
 
     public function ingredients()
@@ -69,7 +94,7 @@ class Recipe extends DatabaseObject
     {
         if(!$this->last_cooked) {
             return 'Never been cooked';
-        }       
+        }
 
         $date = date_create($this->last_cooked);
         return date_format($date, 'M j, Y');

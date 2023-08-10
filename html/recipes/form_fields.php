@@ -16,6 +16,21 @@ $instructions = $recipe->instructions();
 		id="recipeName">
 </div>
 <div class="form-group">
+	<label for="category">Category</label>
+	<select class="form-select" name="recipe[category]">
+		<option value=""></option>
+		<?php
+    foreach (Recipe::CATEGORY as $category_id => $category_name) { ?>
+		<option value="<?php echo $category_id; ?>" <?php
+                                if ($recipe->category == $category_id) {
+                                    echo 'selected';
+                                }
+        ?>
+			><?php echo $category_name; ?></option>
+		<?php } ?>
+	</select>
+</div>
+<div class="form-group">
 	<label for="time">Time</label>
 	<input type="text" name="recipe[time]" class="form-control"
 		value="<?php echo h($recipe->time); ?>" placeholder="50 min"

@@ -44,7 +44,7 @@ $show_header = true;?>
 					<td><?php echo h($recipe->recipe_name); ?></td>
 					<td><?php echo h($recipe->time);?></td>
 					<td><?php echo h($recipe->rating); ?></td>
-					<td></td>
+					<td><?php echo h($recipe->category()); ?></td>
 					<td><?php echo h($recipe->last_cooked);?></td>
 					<td class="align-middle"><a class="action"
 							href="<?php echo url_for('/recipes/show.php?id=' . h(u($recipe->id))); ?>">View</a>
