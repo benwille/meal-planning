@@ -30,6 +30,24 @@ class DatabaseObject
         return $object_array;
     }
 
+    public static function query($sql)
+    {
+
+        $result = self::$database->query($sql);
+        if(!$result) {
+            exit("Database query failed.");
+        }
+
+        $object_array = [];
+        while ($row = $result->fetch_assoc()) {
+            $object_array[] = $row;
+        }
+        $result->free();
+
+        return $object_array;
+
+    }
+
     public static function find_all()
     {
         $sql = "SELECT * FROM " . static::$table_name;
@@ -80,6 +98,11 @@ class DatabaseObject
         // Add custom validations
 
         return $this->errors;
+    }
+
+    public function prepare()
+    {
+
     }
 
     public function create()

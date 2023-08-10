@@ -133,6 +133,6 @@ echo '<script>console.log("' . $msg . '");</script>';
 	<?php } ?>
 
 
-	<div class="<?php echo $container ?: 'container'; ?>"
+	<div class="<?php echo $container ?: 'container'; ?> pt-2"
 		id="content">
 		<?php echo display_session_message(); ?>
