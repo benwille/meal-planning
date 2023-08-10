@@ -33,7 +33,7 @@ if(is_post_request()) {
 
 $sql = 'SELECT * FROM calendar';
 $query = $recipe->query($sql);
-var_dump($query[6]);
+// var_dump($query[6]);
 
 ?>
 

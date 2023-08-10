@@ -40,7 +40,9 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Edit Recipe'; ?>
+<?php $page_title = 'Edit Recipe';
+$show_header = true;
+?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <a class="backlink"
