@@ -106,9 +106,9 @@ echo '<script>console.log("' . $msg . '");</script>';
 						<div class="navbar-nav">
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/'); ?>">Schedule</a>
-							<!-- <a class="nav-item nav-link"
+							<a class="nav-item nav-link"
 								href="<?php echo url_for('/recipes/'); ?>">Recipes</a>
-							-->
+
 							<?php if ($session->is_logged_in()) { ?>
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/users/show.php?id=' . h(u($session->admin_id()))); ?>">Admin</a>
