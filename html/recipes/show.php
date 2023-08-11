@@ -14,30 +14,27 @@ $show_header = true; ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <a class="backlink"
-	href="<?php echo url_for('/recipes/index.php'); ?>">&laquo;
-	Back to List</a>
+	href="<?php echo url_for('/recipes/index.php'); ?>"><i
+		class="bi bi-arrow-left fs-2"></i>
+</a>
 
 <div class="recipe show">
 
-	<div class="attributes">
+	<div class="attributes py-5">
 		<h1 class="mb-0"><?php echo h($recipe->recipe_name); ?></h1>
-		<div class="rating"><?php echo($recipe->rating());?>
+		<div class="rating" aria-description="recipe rating">
+			<?php echo($recipe->rating());?>
 		</div>
 
-		<dl>
-			<dt>Prep Time:</dt>
+		<dl aria-description="Time to Cook">
+			<dt><i class="bi bi-clock"></i></dt>
 			<dd><?php echo h($recipe->time); ?></dd>
 		</dl>
-		<dl>
-			<dt>Last Cooked:</dt>
+		<dl aria-description="Last Cooked Date">
+			<dt><i class="bi bi-calendar4-event"></i></dt>
 			<dd><?php echo h($recipe->last_cooked()); ?></dd>
 		</dl>
 
-	</div>
-	<div class="category mt-5">
-		<div class="text-muted text-uppercase fw-bold">
-			<?php echo h($recipe->category());?>
-		</div>
 	</div>
 
 	<div class="recipe-info">
@@ -49,6 +46,10 @@ $show_header = true; ?>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="instructions-tab" data-bs-toggle="tab" data-bs-target="#instructions"
 					type="button" role="tab" aria-controls="instructions" aria-selected="false">Instructions</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button"
+					role="tab" aria-controls="notes" aria-selected="false">Notes</button>
 			</li>
 
 		</ul>
@@ -66,21 +67,33 @@ $show_header = true; ?>
 				<?php } ?>
 			</div>
 			<div class="tab-pane fade py-3" id="instructions" role="tabpanel" aria-labelledby="instructions-tab">
-				<?php if($recipe->instructions) { ?>
+				<?php if($recipe->instructions) {
+				    $s = 1;?>
+				<?php $instructions = $recipe->instructions();?>
+				<?php foreach($instructions as $i) {?>
+				<div class="step py-3">
+					<div class="step-num fs-5">Step <?php echo $s;?>
+					</div>
+					<div class="instruction">
+						<?php echo h($i);?>
+					</div>
+				</div>
 
-				<ul>
-					<?php $instructions = $recipe->instructions();?>
-					<?php foreach($instructions as $i) {?>
-					<li><?php echo h($i);?></li>
-					<?php } ?>
-				</ul>
+				<?php
+				    $s++;
+				} ?>
+
 				<?php } ?>
+			</div>
+			<div class="tab-pane fade py-3" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+				<?php echo nl2br(h($recipe->notes));?>
 			</div>
 		</div>
 	</div>
-	<div class="notes">
-		<h3>Notes</h3>
-		<?php echo nl2br(h($recipe->notes));?>
+	<div class="category">
+		<div class="badge rounded-pill bg-secondary text-uppercase fw-bold">
+			<?php echo h($recipe->category());?>
+		</div>
 	</div>
 </div>
 <div class="edit-link mt-3">
