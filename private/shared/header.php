@@ -18,7 +18,11 @@ echo '<script>console.log("' . $msg . '");</script>';
 	</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Montserrat:wght@300;500&display=swap"
+		rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
@@ -90,7 +94,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 	class="<?php echo implode(", ", $page_classes); ?>"
 	<?php endif; ?>>
 	<?php if ($show_header == true) { ?>
-	<header class="bg-primary">
+	<header class="bg-black">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-dark">
 				<div class="container-fluid">

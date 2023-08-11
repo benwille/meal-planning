@@ -1,5 +1,5 @@
 </div> <!--end container-->
-<footer class="container-fluid mt-5 pt-3 text-light bg-primary">
+<footer class="container-fluid mt-5 pt-3 text-light bg-black">
 	<div>
 		<div class="d-flex">
 
