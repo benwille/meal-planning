@@ -38,27 +38,24 @@ $show_header = true;?>
 			</tr>
 			<?php foreach ($recipes as $recipe) { ?>
 			<tr>
-				<form
-					action="<?php echo 'index.php?id=' . h(u($post->id)) . '&station=' . $station; ?>"
-					method="post" id="postform">
-					<td><?php echo h($recipe->recipe_name); ?></td>
-					<td><?php echo h($recipe->time);?></td>
-					<td><?php echo h($recipe->rating); ?></td>
-					<td><?php echo h($recipe->category()); ?></td>
-					<td><?php echo h($recipe->last_cooked);?></td>
-					<td class="align-middle"><a class="action"
-							href="<?php echo url_for('/recipes/show.php?id=' . h(u($recipe->id))); ?>">View</a>
-					</td>
-					<?php //if ($user->is_admin()) {?>
-					<td class="align-middle"><a class="action"
-							href="<?php echo url_for('/recipes/edit.php?id=' . h(u($recipe->id))); ?>">Edit</a>
-					</td>
-					<td class="align-middle"><a class="action"
-							href="<?php echo url_for('/recipes/delete.php?id=' . h(u($recipe->id))); ?>">Delete</a>
-					</td>
-					<!-- <td class="align-middle"><input type="submit" value="Update" /></td> -->
-					<?php // }?>
-				</form>
+				<td><?php echo h($recipe->recipe_name); ?></td>
+				<td><?php echo h($recipe->time);?></td>
+				<td><?php echo h($recipe->rating); ?></td>
+				<td><?php echo h($recipe->category()); ?></td>
+				<td><?php echo h($recipe->last_cooked);?></td>
+				<td class="align-middle"><a class="action"
+						href="<?php echo url_for('/recipes/show.php?id=' . h(u($recipe->id))); ?>">View</a>
+				</td>
+				<?php //if ($user->is_admin()) {?>
+				<td class="align-middle"><a class="action"
+						href="<?php echo url_for('/recipes/edit.php?id=' . h(u($recipe->id))); ?>">Edit</a>
+				</td>
+				<td class="align-middle"><a class="action"
+						href="<?php echo url_for('/recipes/delete.php?id=' . h(u($recipe->id))); ?>">Delete</a>
+				</td>
+				<!-- <td class="align-middle"><input type="submit" value="Update" /></td> -->
+				<?php // }?>
+
 			</tr>
 			<?php } ?>
 		</table>
